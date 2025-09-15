@@ -1,0 +1,17 @@
+dist/*
+node_modules
+.env
+
+*_sessions
+*tokens
+.wwebjs*
+
+*.log
+*qr.png
+
+
+/bot_sessions
+/build
+pnpm-lock.yaml
+.env
+.state.json

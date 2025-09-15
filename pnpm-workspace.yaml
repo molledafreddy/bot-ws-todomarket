@@ -1,0 +1,6 @@
+ignoredBuiltDependencies:
+  - '@ffmpeg-installer/darwin-x64'
+  - '@leifermendez/baileys'
+  - esbuild
+  - protobufjs
+  - sharp
