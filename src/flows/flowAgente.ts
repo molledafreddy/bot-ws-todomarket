@@ -1,5 +1,5 @@
 // const { addKeyword, addAnswer, addAction } = require('@bot-whatsapp/bot')
-import { addKeyword, addAnswer, addAction } from '@builderbot/bot'
+import { addKeyword, addAnswer } from '@builderbot/bot'
 
 
 const FlowAgente = addKeyword(['4', 'Agente', 'AGENTE'])
@@ -18,7 +18,7 @@ const FlowAgente = addKeyword(['4', 'Agente', 'AGENTE'])
     // await refProvider.sendMessage(numAgente, {Text: message});
     provider.sendText('56936499908@s.whatsapp.net', message)
       //  service.cleanData();
-       return endFlow({body: '*Gracias*'});
+       return endFlow('*Gracias*');
    }
 );
 
