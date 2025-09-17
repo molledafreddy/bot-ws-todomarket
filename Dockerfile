@@ -88,7 +88,7 @@
 # Image size ~ 400MB
 FROM node:21-alpine3.18 as builder
 
-WORKDIR /src/app
+WORKDIR /app/src
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV PNPM_HOME=/usr/local/bin
@@ -124,10 +124,10 @@ ARG PORT
 ENV PORT $PORT
 EXPOSE $PORT
 
-COPY --from=builder /src/app/assets ./assets
-COPY --from=builder /src/app/dist ./dist
-COPY --from=builder /src/app/tsconfig.json /src/app/rollup.config.js /src/app/package.json /src/app/pnpm-lock.yaml ./
-
+COPY --from=builder /app/src/assets ./assets
+COPY --from=builder /app/src/dist ./dist
+COPY --from=builder /app/src/tsconfig.json /src/app/rollup.config.js /src/app/package.json /src/app/pnpm-lock.yaml ./
+    
 RUN corepack enable && corepack prepare pnpm@latest --activate 
 ENV PNPM_HOME=/usr/local/bin
 
