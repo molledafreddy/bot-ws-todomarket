@@ -118,7 +118,7 @@ RUN pnpm run build \
 
 FROM node:21-alpine3.18 as deploy
 
-WORKDIR /src/app
+WORKDIR /app/src
 
 ARG PORT
 ENV PORT $PORT
