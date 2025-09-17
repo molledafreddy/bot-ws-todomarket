@@ -97,6 +97,8 @@ COPY . .
 
 COPY package*.json *-lock.yaml ./
 
+COPY rollup.config.js ./
+
 RUN apk add --no-cache --virtual .gyp \
         python3 \
         make \
