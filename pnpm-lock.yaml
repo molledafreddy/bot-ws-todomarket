@@ -826,8 +826,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@keyv/bigmap@1.0.0':
-    resolution: {integrity: sha512-N2UsRSXlWwbvYKdFVS7sKqj6oXGegELh+zr9VripWDc8grsq8KBNp8JHI+9AQuUEFiM1S7+tm6lLp/lmbBCqCw==}
+  '@keyv/bigmap@1.0.1':
+    resolution: {integrity: sha512-dZ7TMshK6brpuGPPRoq4pHNzNH4KTWaxVPB7KEnPErlgJpc+jG1Oyx3sw6nBFiZ0OCKwC1zU6skMEG7H421f9g==}
     engines: {node: '>= 20'}
 
   '@keyv/serialize@1.1.1':
@@ -1941,8 +1941,8 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
-  keyv@5.5.1:
-    resolution: {integrity: sha512-eF3cHZ40bVsjdlRi/RvKAuB0+B61Q1xWvohnrJrnaQslM3h1n79IV+mc9EGag4nrA9ZOlNyr3TUzW5c8uy8vNA==}
+  keyv@5.5.2:
+    resolution: {integrity: sha512-TXcFHbmm/z7MGd1u9ASiCSfTS+ei6Z8B3a5JHzx3oPa/o7QzWVtPRpc4KGER5RR469IC+/nfg4U5YLIuDUua2g==}
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -3156,15 +3156,15 @@ snapshots:
     dependencies:
       '@cacheable/memoize': 2.0.1
       '@cacheable/utils': 2.0.1
-      '@keyv/bigmap': 1.0.0
+      '@keyv/bigmap': 1.0.1
       hookified: 1.12.0
-      keyv: 5.5.1
+      keyv: 5.5.2
 
   '@cacheable/node-cache@1.7.1':
     dependencies:
       cacheable: 2.0.1
       hookified: 1.12.0
-      keyv: 5.5.1
+      keyv: 5.5.2
 
   '@cacheable/utils@2.0.1': {}
 
@@ -3694,7 +3694,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@keyv/bigmap@1.0.0':
+  '@keyv/bigmap@1.0.1':
     dependencies:
       hookified: 1.12.0
 
@@ -4455,7 +4455,7 @@ snapshots:
       '@cacheable/memory': 2.0.1
       '@cacheable/utils': 2.0.1
       hookified: 1.12.0
-      keyv: 5.5.1
+      keyv: 5.5.2
 
   call-bind-apply-helpers@1.0.2:
     dependencies:
@@ -5022,7 +5022,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  keyv@5.5.1:
+  keyv@5.5.2:
     dependencies:
       '@keyv/serialize': 1.1.1
 

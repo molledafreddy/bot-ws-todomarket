@@ -86,48 +86,95 @@
 
 
 # Image size ~ 400MB
-FROM node:21-alpine3.18 as builder
+# FROM node:21-alpine3.18 AS builder
 
-WORKDIR /app/src
+# WORKDIR /app/src
+
+# RUN corepack enable && corepack prepare pnpm@latest --activate
+# ENV PNPM_HOME=/usr/local/bin
+
+# # Copia solo package.json, pnpm-lock.yaml y rollup.config.js primero
+# COPY rollup.config.js tsconfig.json package.json pnpm-lock.yaml ./
+
+# COPY src ./src
+# COPY assets ./assets
+
+# # Instala dependencias nativas y git
+# RUN apk add --no-cache --virtual .gyp \
+#         python3 \
+#         make \
+#         g++ \
+#     && apk add --no-cache git
+
+# # Instala dependencias
+# RUN pnpm install
+
+# # Ahora copia el resto del código fuente
+# COPY . .
+
+# # Ejecuta el build
+# RUN pnpm run build \
+#     && apk del .gyp
+
+# FROM node:21-alpine3.18 AS deploy
+
+# WORKDIR /app/src
+
+# ARG PORT
+# # ENV PORT $PORT
+# ENV PORT=$PORT
+# EXPOSE $PORT
+
+# COPY --from=builder /app/src/assets ./assets
+# COPY --from=builder /app/src/dist ./dist
+# COPY --from=builder /app/src/tsconfig.json /app/src/rollup.config.js /app/src/package.json /app/src/pnpm-lock.yaml ./
+    
+# RUN corepack enable && corepack prepare pnpm@latest --activate 
+# ENV PNPM_HOME=/usr/local/bin
+
+# RUN npm cache clean --force && pnpm install --production --ignore-scripts \
+#     && addgroup -g 1001 -S nodejs && adduser -S -u 1001 nodejs \
+#     && rm -rf $PNPM_HOME/.npm $PNPM_HOME/.node-gyp
+
+# CMD ["npm", "start"]
+
+
+FROM node:21-alpine3.18 AS builder
+
+WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV PNPM_HOME=/usr/local/bin
 
-# Copia solo package.json, pnpm-lock.yaml y rollup.config.js primero
 COPY rollup.config.js tsconfig.json package.json pnpm-lock.yaml ./
-
 COPY src ./src
 COPY assets ./assets
 
-# Instala dependencias nativas y git
 RUN apk add --no-cache --virtual .gyp \
         python3 \
         make \
         g++ \
     && apk add --no-cache git
 
-# Instala dependencias
 RUN pnpm install
+RUN echo "La variable de entorno es: "
+RUN ls -l /app/src || echo "No existe /app/src"
 
-# Ahora copia el resto del código fuente
-COPY . .
-
-# Ejecuta el build
 RUN pnpm run build \
     && apk del .gyp
 
-FROM node:21-alpine3.18 as deploy
+FROM node:21-alpine3.18 AS deploy
 
-WORKDIR /app/src
+WORKDIR /app
 
 ARG PORT
-ENV PORT $PORT
+ENV PORT=$PORT
 EXPOSE $PORT
 
-COPY --from=builder /app/src/assets ./assets
-COPY --from=builder /app/src/dist ./dist
-COPY --from=builder /app/src/tsconfig.json /app/src/rollup.config.js /app/src/package.json /app/src/pnpm-lock.yaml ./
-    
+COPY --from=builder /app/assets ./assets
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/rollup.config.js /app/package.json /app/pnpm-lock.yaml /app/tsconfig.json ./
+
 RUN corepack enable && corepack prepare pnpm@latest --activate 
 ENV PNPM_HOME=/usr/local/bin
 
@@ -135,4 +182,4 @@ RUN npm cache clean --force && pnpm install --production --ignore-scripts \
     && addgroup -g 1001 -S nodejs && adduser -S -u 1001 nodejs \
     && rm -rf $PNPM_HOME/.npm $PNPM_HOME/.node-gyp
 
-CMD ["npm", "start"]
+CMD ["pnpm", "start"]
