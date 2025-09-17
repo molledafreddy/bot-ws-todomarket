@@ -19,16 +19,27 @@
       "~/*": ["./src/*"]
     }
   },
+  // "include": [
+  //   "**/*.js",
+  //   "**/*.ts"
+  // ],
   "include": [
-    "**/*.js",
-    "**/*.ts"
+    "src/**/*.ts"
   ],
+  // "exclude": [
+  //   "node_modules",
+  //   "dist",
+  //   "**/*.test.ts",
+  //   "**/*.spec.ts",
+  //   "**e2e**",
+  //   "**mock**"
+  // ]
   "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts",
-    "**e2e**",
-    "**mock**"
-  ]
+  "node_modules",
+  "dist",
+  "**/*.test.ts",
+  "**/*.spec.ts",
+  "**e2e**",
+  "**mock**"
+]
 }
