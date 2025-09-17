@@ -16,11 +16,12 @@
     "incremental": true,
     "skipLibCheck": true,
     "paths": {
-      "~/*": ["./app/src/*"]
+      "~/*": ["./src/*"]
     }
   },
   "include": [
-    "./**/*.ts"
+    "**/*.js",
+    "**/*.ts"
   ],
   "exclude": [
   "node_modules",
