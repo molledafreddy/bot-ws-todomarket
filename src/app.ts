@@ -286,25 +286,18 @@ const flowDisable = addKeyword("disable")
 )
 
 
- 
-
-//  const flowValidTime = addKeyword(EVENTS.WELCOME)
  const flowValidTime = addKeyword<Provider, Database>(EVENTS.WELCOME)
  .addAction(async(ctx,{gotoFlow, provider, state}) => {
      try {
-        // console.log('ctx', ctx.key.remoteJid)
         const refProvider = provider.getInstance();
         const jid = ctx.key.remoteJid
         await provider.vendor.presenceSubscribe(jid)
         await provider.vendor.sendPresenceUpdate('composing', jid);
-        // await delay(10000)
         await provider.vendor.readMessages([ctx.key])
 
-        // console.log('ctx', ctx)
          await state.update({ name: ctx.body})
 
         const dataState = state.getMyState()
-        // console.log('Validando hora de Atencion', ctx)
         const horaActual = moment();
         const horario = "09:00-24:00"
         const rangoHorario = horario.split("-");
