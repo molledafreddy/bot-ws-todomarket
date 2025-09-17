@@ -51,7 +51,8 @@ ENV PNPM_HOME=/usr/local/bin
 WORKDIR /app
 
 # Copy package.json and pnpm-lock.yaml files to the working directory
-COPY package*.json pnpm-lock.yaml ./
+# COPY package*.json pnpm-lock.yaml ./
+COPY package*.json *-lock.yaml ./
 
 # Install dependencies using PNPM
 COPY . .
