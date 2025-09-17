@@ -47,7 +47,8 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV PNPM_HOME=/usr/local/bin
 
 # Copia solo package.json y pnpm-lock.yaml primero
-COPY package.json pnpm-lock.yaml ./
+# COPY package.json pnpm-lock.yaml ./
+COPY package*.json *-lock.yaml ./
 
 # Instala git antes de instalar dependencias
 RUN apk add --no-cache git
