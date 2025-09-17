@@ -20,7 +20,7 @@
     }
   },
   "include": [
-    "src/**/*.ts"
+    "app/src/**/*.ts"
   ],
   "exclude": [
   "node_modules",
