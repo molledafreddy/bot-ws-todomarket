@@ -12,6 +12,5 @@ node_modules
 
 /bot_sessions
 /build
-pnpm-lock.yaml
 .env
 .state.json
