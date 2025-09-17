@@ -94,7 +94,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV PNPM_HOME=/usr/local/bin
 
 # Copia solo package.json, pnpm-lock.yaml y rollup.config.js primero
-COPY rollup.config.js package.json pnpm-lock.yaml ./
+COPY rollup.config.js tsconfig.json package.json pnpm-lock.yaml ./
 
 # Instala dependencias nativas y git
 RUN apk add --no-cache --virtual .gyp \
@@ -123,7 +123,7 @@ EXPOSE $PORT
 
 COPY --from=builder /app/assets ./assets
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/rollup.config.js /app/package.json /app/pnpm-lock.yaml ./
+COPY --from=builder /app/tsconfig.json /app/rollup.config.js /app/package.json /app/pnpm-lock.yaml ./
 
 RUN corepack enable && corepack prepare pnpm@latest --activate 
 ENV PNPM_HOME=/usr/local/bin
