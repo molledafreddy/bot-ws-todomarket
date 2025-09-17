@@ -57,10 +57,12 @@ COPY package*.json *-lock.yaml ./
 RUN apk add --no-cache git
 
 # Instala TODAS las dependencias (incluyendo devDependencies)
-RUN pnpm install
+# RUN pnpm install
+RUN npm install -g typescript && npm install
 
 # Ahora copia el resto del código
 COPY . .
+RUN tsc 
 
 # Ejecuta el build (rimraf estará disponible)
 RUN pnpm run build
