@@ -19,21 +19,9 @@
       "~/*": ["./src/*"]
     }
   },
-  // "include": [
-  //   "**/*.js",
-  //   "**/*.ts"
-  // ],
   "include": [
     "src/**/*.ts"
   ],
-  // "exclude": [
-  //   "node_modules",
-  //   "dist",
-  //   "**/*.test.ts",
-  //   "**/*.spec.ts",
-  //   "**e2e**",
-  //   "**mock**"
-  // ]
   "exclude": [
   "node_modules",
   "dist",
