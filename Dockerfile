@@ -110,7 +110,7 @@ RUN apk add --no-cache --virtual .gyp \
 RUN pnpm install
 
 # Ahora copia el resto del código fuente
-# COPY . .
+COPY . .
 
 # Ejecuta el build
 RUN pnpm run build \
