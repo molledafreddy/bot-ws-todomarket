@@ -39,6 +39,10 @@
 
 # CMD ["pnpm", "start"]
 
+
+
+
+
 FROM node:21-alpine3.18 as builder
 
 WORKDIR /app
@@ -47,18 +51,18 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV PNPM_HOME=/usr/local/bin
 
 # Copia solo package.json y pnpm-lock.yaml primero
-# COPY package.json pnpm-lock.yaml ./
-COPY package*.json *-lock.yaml ./
+COPY package.json pnpm-lock.yaml ./
 
 # Instala git antes de instalar dependencias
 RUN apk add --no-cache git
 
-# Instala dependencias
+# Instala TODAS las dependencias (incluyendo devDependencies)
 RUN pnpm install
 
 # Ahora copia el resto del código
 COPY . .
 
+# Ejecuta el build (rimraf estará disponible)
 RUN pnpm run build
 
 FROM node:21-alpine3.18 as deploy
@@ -71,6 +75,7 @@ COPY --from=builder /app/package.json /app/pnpm-lock.yaml ./
 RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV PNPM_HOME=/usr/local/bin
 
+# Solo instala dependencias de producción en la etapa final
 RUN pnpm install --production --ignore-scripts
 
 CMD ["pnpm", "start"]
