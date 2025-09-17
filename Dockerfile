@@ -61,6 +61,7 @@ RUN apk add --no-cache git
 # RUN pnpm install
 RUN npm install -g typescript && npm install
 
+
 # Ahora copia el resto del código
 COPY . .
 RUN tsc 
