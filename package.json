@@ -8,7 +8,7 @@
     "start": "npm run build && node --es-module-specifier-resolution=node dist/app.js",
     "lint": "eslint . --no-ignore",
     "dev": "npm run lint && nodemon ./src/app.ts",
-    "build": "npx rollup -c"
+    "build": "rimraf ./dist && tsc"
   },
   "keywords": [],
   "dependencies": {
