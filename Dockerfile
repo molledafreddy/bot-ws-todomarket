@@ -96,6 +96,9 @@ ENV PNPM_HOME=/usr/local/bin
 # Copia solo package.json, pnpm-lock.yaml y rollup.config.js primero
 COPY rollup.config.js tsconfig.json package.json pnpm-lock.yaml ./
 
+COPY src ./src
+COPY assets ./assets
+
 # Instala dependencias nativas y git
 RUN apk add --no-cache --virtual .gyp \
         python3 \
@@ -107,7 +110,7 @@ RUN apk add --no-cache --virtual .gyp \
 RUN pnpm install
 
 # Ahora copia el resto del código fuente
-COPY . .
+# COPY . .
 
 # Ejecuta el build
 RUN pnpm run build \
