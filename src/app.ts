@@ -85,6 +85,7 @@ const FlowAgente2 = addKeyword(['2', 'Agente', 'AGENTE'])
  const flowOrder = addKeyword([EVENTS.ORDER])
  .addAction(async(ctx,{gotoFlow, fallBack, provider, globalState}) => {
     try {
+        console.log('ctx dentro de flowOrder', ctx)
         const jid = ctx.key.remoteJid
         await provider.vendor.presenceSubscribe(jid)
         await provider.vendor.sendPresenceUpdate('composing', jid);
@@ -104,6 +105,8 @@ const FlowAgente2 = addKeyword(['2', 'Agente', 'AGENTE'])
                 console.log(' Concretar Compra  Concretar Compra')
                 return gotoFlow(flowEndShoppingCart);
             }
+        } else {
+            return fallBack("❌  *No se recibió información válida*\n\n Para Concretar la compra debe seleccionar los productos desde el carrito de compra.");
         }
     } catch (error) {
         console.log('error Media', error)
