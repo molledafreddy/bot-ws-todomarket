@@ -2,7 +2,7 @@ import { addKeyword, EVENTS } from '@builderbot/bot'
 import { BotContext, TFlow } from '@builderbot/bot/dist/types'
 
 const timers = {}
-const IDLETIME = 50000
+const IDLETIME = 1200000
 
 function formatDate(date: Date): string {
     return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}` +
