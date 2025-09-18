@@ -159,6 +159,7 @@ RUN apk add --no-cache --virtual .gyp \
 RUN pnpm install
 RUN echo "La variable de entorno es: "
 RUN ls -l /app/src || echo "No existe /app/src"
+RUN find /app/src -name "*.ts"
 
 RUN pnpm run build \
     && apk del .gyp
