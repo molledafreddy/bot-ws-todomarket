@@ -207,7 +207,7 @@ async function sendCatalog( provider: any, from: any, catalog: any) {
         body: body || "Mira nuestros productos",
         mediaType: "VIDEO", // VIDEO - IMAGE - NONE
         // mediaUrl: `https://wa.me/c/${catalogPath}`,
-        mediaUrl: `https://wa.me/c/56979643943`,
+        mediaUrl: `https://wa.me/c/56979643935`,
         thumbnailUrl: image || "https://github.com/Ameth1208/PortalQR/blob/main/resources/logo.png?raw=true",
         // sourceUrl: `https://wa.me/c/${catalogPath}`,
         sourceUrl: `https://wa.me/c/56979643943`,
